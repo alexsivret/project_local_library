@@ -15,10 +15,10 @@ function findBookById(books, id) {
 }
 
 function partitionBooksByBorrowedStatus(books) {
-  let loanedOut = [];
+  const loanedOut = [];
   let duplicate = books;
   let returned = [];
-  let finalArray = [];
+  const finalArray = [];
   for (let varname in books) {
     for (let varname2 in books[varname].borrows) {
       let shorter = books[varname].borrows[varname2];
@@ -35,8 +35,8 @@ function partitionBooksByBorrowedStatus(books) {
 }
 
 function getBorrowersForBook(book, accounts) {
-  let bookStatus = [];
-  let accountStatus = [];
+  const bookStatus = [];
+  const accountStatus = [];
   for (let blank in book.borrows) {
     bookStatus[blank] = book.borrows[blank];
   }

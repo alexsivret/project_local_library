@@ -1,22 +1,23 @@
-function totalBooksCount(books) {
+function countingHelper(givenArray){
   let sum = 0;
-  for (let number in books) {
-    sum += 1;
+  for (let number in givenArray) {
+    sum +=1
   }
-  return sum;
+  return sum
+}
+
+function totalBooksCount(books) {
+ return countingHelper(books)
 }
 
 function totalAccountsCount(accounts) {
-  let sum = 0;
-  for (let number in accounts) {
-    sum += 1;
-  }
-  return sum;
+  return countingHelper(accounts)
 }
 
 function booksBorrowedCount(books) {
-  let sum = 0;
-  let loanedOut = [];
+  
+  const loanedOut = []
+  const reduced = [];
   for (let varname in books) {
     for (let varname2 in books[varname].borrows) {
       let shorter = books[varname].borrows[varname2];
@@ -26,13 +27,16 @@ function booksBorrowedCount(books) {
     }
   }
   for (let number in loanedOut) {
-    sum += 1;
+    reduced.push(1) ;
   }
-  return sum;
+  
+  let result = reduced.reduce((total, number) => total + number)
+  return result
+  ;
 }
 
 function getMostCommonGenres(books) {
-  let genres = [];
+  const genres = [];
   for (let index in books) {
     genres.push({ name: books[index].genre, count: 1 });
     genres.sort();
@@ -59,7 +63,7 @@ function getMostCommonGenres(books) {
 }
 
 function getMostPopularBooks(books) {
-  let popular = [];
+  const popular = [];
 
   for (let index in books) {
     popular.push({
@@ -77,7 +81,7 @@ function getMostPopularBooks(books) {
 function getMostPopularAuthors(books, authors) {
   books.sort((a, b) => (a.authorId < b.authorId ? 1 : -1));
   authors.sort((a, b) => (a.id < b.id ? 1 : -1));
-  let popularUnsorted = [];
+  const popularUnsorted = [];
   for (let index in authors) {
     for (let index2 in books) {
       if (authors[index].id === books[index2].authorId) {
